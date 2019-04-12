@@ -126,6 +126,9 @@ def dealer_wins(chips):
     print('Dealer has won')
     chips.lose_bet()
 
+def push(chips):
+    print('There was a tie, no change in chips')
+
 while True:
     print('Welcome to Black Jack')
     deck = Deck()
@@ -162,6 +165,8 @@ while True:
             player_wins(player_chips)
         elif player_hand.value < dealer_hand.value:
             dealer_wins(player_chips)
+        elif player_hand.value == dealer_hand.value:
+            push(player_chips)
 
     print(f'You now have {player_chips.total} chips')
     choice = input('Play again (y/n)')
