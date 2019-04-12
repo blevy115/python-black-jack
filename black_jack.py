@@ -22,7 +22,10 @@ class Deck:
                 self.deck.append(Card(rank, suit))
 
     def __str__(self):
-        return f'{self.deck}'
+        deck_string = ''
+        for card in self.deck:
+            deck_string += '\n' + card.__str__()
+        return decl_string
 
     def shuffle(self):
         random.shuffle(self.deck)
