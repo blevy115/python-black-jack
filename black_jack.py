@@ -45,12 +45,13 @@ class Hand:
         card = deck.deal()
         self.cards.append(card)
         self.value += values[self.cards[-1].rank]
+        if self.value > 21:
+            self.adjust_for_ace()
 
     def adjust_for_ace(self):
-        if self.value > 21:
-            for cards in self.cards:
-                if card.rank == 'Ace':
-                    self.value -= 10
+        for card in self.cards:
+            if card.rank == 'Ace':
+                self.value -= 10
 
 
 class Chips:
@@ -148,7 +149,6 @@ while True:
     while playing:
         hit_or_stand(deck, player_hand)
         show_some(player_hand, dealer_hand)
-        print(player_hand.value)
         if player_hand.value > 21:
             player_busts(player_chips)
             break
